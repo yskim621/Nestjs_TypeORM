@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuthModule } from 'src/modules/auth/auth.module';
 import { BoardRepository } from './board.repository';
 import { BoardsController } from './boards.controller';
 import { BoardsService } from './boards.service';
@@ -11,6 +11,7 @@ import { BoardsService } from './boards.service';
     AuthModule
   ],
   controllers: [BoardsController],
-  providers: [BoardsService]
+  providers: [BoardsService],
+  exports: [BoardsService]
 })
 export class BoardsModule {}

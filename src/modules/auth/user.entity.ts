@@ -1,4 +1,4 @@
-import { Board } from "src/boards/board.entity";
+import { Board } from "src/modules/boards/board.entity";
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()

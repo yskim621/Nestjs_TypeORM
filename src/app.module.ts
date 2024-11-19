@@ -1,14 +1,1 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { BoardsModule } from './boards/boards.module';
-import { typeORMConfig } from './configs/typeorm.config';
-import { AuthModule } from './auth/auth.module';
-
-@Module({
-  imports: [
-    TypeOrmModule.forRoot(typeORMConfig),
-    BoardsModule,
-    AuthModule
-  ],
-})
-export class AppModule {}
+import { forwardRef, Module } from '@nestjs/common';import { TypeOrmModule } from '@nestjs/typeorm';import { typeORMConfig } from './configs/typeorm.config';import { BoardsModule } from './modules/boards/boards.module';import { AuthModule } from './modules/auth/auth.module';import { RouterModule } from '@nestjs/core';import { MindsTrafficLightModule } from "./routes/minds-traffic-light.module";import { Modules } from "./modules/modules";@Module({  imports: [    TypeOrmModule.forRoot(typeORMConfig),    forwardRef(() =>      RouterModule.register([        {          path: 'mtl',          module: MindsTrafficLightModule,        },        // {        //   path: 'user',        //   module: UserApiModule,        // },      ]),    ),    Modules,    // BoardsModule,    // AuthModule,  ],})export class AppModule {}
