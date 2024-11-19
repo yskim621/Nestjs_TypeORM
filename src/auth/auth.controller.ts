@@ -11,6 +11,7 @@ export class AuthController {
 
     @Post('/signup')
     signUp(@Body(ValidationPipe) authcredentialsDto: AuthCredentialsDto): Promise<void> {
+        console.log(`signUp call!!!!!!!!!!!!!!!!!!!!!!`)
         return this.authService.signUp(authcredentialsDto);
     }
 
@@ -20,7 +21,7 @@ export class AuthController {
     }
 
     @Post('/test')
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     test(@GetUser() user: User) {
         console.log('user', user);
     } 
